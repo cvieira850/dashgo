@@ -9,7 +9,7 @@ export function Header() {
       maxWidth={1480}
       height="28"
       marginX="auto"
-      marginTop="4"
+      // marginTop="4"
       paddingX="6"
       alignItems="center"
     >
