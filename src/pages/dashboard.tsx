@@ -1,5 +1,6 @@
 import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import dynamic from 'next/dynamic';
+import { useState } from "react";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
@@ -59,6 +60,12 @@ const series = [
 ];
 
 export default function Dashboard() {
+  const [showChart, setShowChart] = useState(false);
+
+  setTimeout(() => {
+    setShowChart(true);
+  }, 1);
+
   return (
     <Flex direction="column" h="100vh">
       <Header/>
@@ -72,30 +79,32 @@ export default function Dashboard() {
       >
         <Sidebar />
 
-        <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
-          <Box
-            padding={["6", "8"]}
-            backgroundColor="gray.800"
-            borderRadius={8}
-            paddingBottom="4"
-          >
-            <Text fontSize="lg" marginBottom="4">
-              Inscritos da semana
-            </Text>
-            <Chart options={options} series={series} type="area" height={250}/>
-          </Box> 
-          <Box
-            padding={["6", "8"]}
-            backgroundColor="gray.800"
-            borderRadius={8}
-            paddingBottom="4"
-          >
-            <Text fontSize="lg" marginBottom="4">
-              Taxa de abertura
-            </Text>
-            <Chart options={options} series={series} type="area" height={250}/>
-          </Box> 
-        </SimpleGrid>
+        {showChart && (
+          <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
+              <Box
+                padding={["6", "8"]}
+                backgroundColor="gray.800"
+                borderRadius={8}
+                paddingBottom="4"
+              >
+                <Text fontSize="lg" marginBottom="4">
+                  Inscritos da semana
+                </Text>
+                <Chart options={options} series={series} type="area" height={250}/>
+              </Box> 
+              <Box
+                padding={["6", "8"]}
+                backgroundColor="gray.800"
+                borderRadius={8}
+                paddingBottom="4"
+              >
+                <Text fontSize="lg" marginBottom="4">
+                  Taxa de abertura
+                </Text>
+                <Chart options={options} series={series} type="area" height={250}/>
+              </Box> 
+          </SimpleGrid>
+        )}
       </Flex>
     </Flex>
   );

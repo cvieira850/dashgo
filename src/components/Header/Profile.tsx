@@ -13,7 +13,7 @@ export function Profile({ showProfileData =true} : ProfileProps) {
           <Text color="gray.300" fontSize="small">contato@caiovieira.com.br</Text>
         </Box>
       )}
-        <Avatar size="md" name="Caio Vieira" src="https://github.com/cvieira850.png"/>
+        <Avatar size="md" name="Caio Duarte Milanez Vieira" src={"https://github.com/cvieira850.png"}/>
     </Flex>
   );
 }
